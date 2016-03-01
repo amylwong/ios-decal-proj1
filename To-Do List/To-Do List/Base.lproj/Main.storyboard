@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--To Do List Table View Controller-->
@@ -53,7 +54,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4f3-Qi-Gfu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1064" y="-582"/>
+            <point key="canvasLocation" x="1124" y="-582"/>
         </scene>
         <!--Add To Do Item View Controller-->
         <scene sceneID="9He-Py-NK1">
@@ -66,20 +67,35 @@
                     <view key="view" contentMode="scaleToFill" id="oMA-gf-Kyf">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jHN-9d-Cyh">
+                                <rect key="frame" x="8" y="72" width="572" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="jHN-9d-Cyh" firstAttribute="trailing" secondItem="oMA-gf-Kyf" secondAttribute="trailingMargin" id="8ru-xe-VtW"/>
+                            <constraint firstItem="jHN-9d-Cyh" firstAttribute="top" secondItem="bT3-RL-gas" secondAttribute="bottom" constant="8" symbolic="YES" id="gOO-II-lvs"/>
+                            <constraint firstItem="jHN-9d-Cyh" firstAttribute="leading" secondItem="oMA-gf-Kyf" secondAttribute="leadingMargin" constant="-12" id="pXh-F8-gH5"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="NUU-HX-mZy">
-                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="iQY-4G-gZI">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="iQY-4G-gZI">
                             <connections>
                                 <segue destination="9s1-Mf-I1U" kind="unwind" unwindAction="unwindToDoListTableViewController:" id="SEm-qU-PGy"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="ToDoListItem" destination="jHN-9d-Cyh" id="9Qq-Ai-KK2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d5h-lX-yux" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="9s1-Mf-I1U" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2608" y="-582"/>
+            <point key="canvasLocation" x="2468" y="-582"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="wq4-JJ-oVD">
@@ -97,7 +113,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cX4-nH-6ho" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="252" y="-582"/>
+            <point key="canvasLocation" x="472" y="-582"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="2lX-Be-tpy">
