@@ -21,9 +21,9 @@ class AddToDoItemViewController: UIViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let destVC = segue.destinationViewController as! ToDoListTableViewController // contains textfield
-        destVC.model.append(ToDoListItem.text!)
-        print ("hiiii")
+        if (ToDoListItem.text != "") {
+            destVC.model.append(ToDoListItem.text!)
+        }
         return
-        
     }
 }

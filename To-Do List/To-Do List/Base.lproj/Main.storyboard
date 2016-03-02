@@ -22,16 +22,17 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1I7-jn-qiD">
-                                            <rect key="frame" x="279" y="11" width="42" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="1I7-jn-qiD">
+                                            <rect key="frame" x="22" y="11" width="557" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="1I7-jn-qiD" firstAttribute="centerX" secondItem="hVg-iN-yj3" secondAttribute="centerX" id="4bW-T7-omY"/>
-                                        <constraint firstItem="1I7-jn-qiD" firstAttribute="centerY" secondItem="hVg-iN-yj3" secondAttribute="centerY" id="uNc-O5-p3q"/>
+                                        <constraint firstItem="1I7-jn-qiD" firstAttribute="centerX" secondItem="hVg-iN-yj3" secondAttribute="centerX" id="BSE-nE-Zin"/>
+                                        <constraint firstItem="1I7-jn-qiD" firstAttribute="centerY" secondItem="hVg-iN-yj3" secondAttribute="centerY" id="dAB-L1-tne"/>
+                                        <constraint firstItem="1I7-jn-qiD" firstAttribute="leading" secondItem="hVg-iN-yj3" secondAttribute="leadingMargin" constant="14" id="eXY-dF-GW4"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -45,6 +46,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="SXE-Ch-iNb">
+                        <barButtonItem key="leftBarButtonItem" title="Daily Stats View" id="4SO-gN-REv">
+                            <connections>
+                                <segue destination="bfY-zZ-cV4" kind="show" identifier="toStats" id="MWf-bo-Vg6"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="sAU-iq-Q36">
                             <connections>
                                 <segue destination="Y3V-uu-HbG" kind="presentation" id="U0m-qR-wIU"/>
@@ -54,7 +60,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4f3-Qi-Gfu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1124" y="-582"/>
+            <point key="canvasLocation" x="1104" y="-582"/>
         </scene>
         <!--Add To Do Item View Controller-->
         <scene sceneID="9He-Py-NK1">
@@ -113,7 +119,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cX4-nH-6ho" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="472" y="-582"/>
+            <point key="canvasLocation" x="437" y="-582"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="2lX-Be-tpy">
@@ -132,6 +138,60 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cVB-rs-p0f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1796" y="-582"/>
+        </scene>
+        <!--Daily Stats View View Controller-->
+        <scene sceneID="t3q-LX-wjd">
+            <objects>
+                <viewController id="bfY-zZ-cV4" customClass="DailyStatsViewViewController" customModule="To_Do_List" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="c9A-YT-KXl"/>
+                        <viewControllerLayoutGuide type="bottom" id="zPd-hs-gaw"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="l87-MT-xUY">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="pUg-Rk-h3F">
+                                <rect key="frame" x="143" y="239" width="315" height="121"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="315" id="pv8-tt-Jew"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="# of tasks completed in the past 24 hours:" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="j1x-Io-gql">
+                                <rect key="frame" x="121" y="184" width="359" height="23"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="pUg-Rk-h3F" firstAttribute="top" secondItem="j1x-Io-gql" secondAttribute="bottom" constant="32" id="5Qf-9j-zgT"/>
+                            <constraint firstItem="pUg-Rk-h3F" firstAttribute="centerX" secondItem="j1x-Io-gql" secondAttribute="centerX" id="8cs-nE-6So"/>
+                            <constraint firstItem="pUg-Rk-h3F" firstAttribute="centerX" secondItem="l87-MT-xUY" secondAttribute="centerX" id="IhU-hf-KLE"/>
+                            <constraint firstItem="zPd-hs-gaw" firstAttribute="top" secondItem="pUg-Rk-h3F" secondAttribute="bottom" constant="240" id="X9A-vt-Aqo"/>
+                            <constraint firstItem="pUg-Rk-h3F" firstAttribute="centerY" secondItem="l87-MT-xUY" secondAttribute="centerY" id="fEQ-lC-ghe"/>
+                            <constraint firstItem="j1x-Io-gql" firstAttribute="centerX" secondItem="pUg-Rk-h3F" secondAttribute="centerX" id="xSG-MM-1Zf"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="ZyG-0r-2WF">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="KZT-l0-szP">
+                            <connections>
+                                <segue destination="g8J-Dx-Cjk" kind="unwind" unwindAction="unwindToDoListTableViewController:" id="VbT-rZ-eQi"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="numberItemsCompletedLabel" destination="pUg-Rk-h3F" id="bAY-0e-XSw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2yx-mR-2cv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="g8J-Dx-Cjk" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1593" y="138"/>
         </scene>
     </scenes>
 </document>

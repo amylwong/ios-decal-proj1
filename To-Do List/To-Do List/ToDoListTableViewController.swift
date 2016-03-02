@@ -10,58 +10,83 @@ import UIKit
 
 class ToDoListTableViewController: UITableViewController {
     
-//    let model = ["go to sleep!!!", "do homework!!!!"]
     var model: [String] = []
+    var completed: [String] = []
+    var numItemsCompleted: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-      model = [String]()
-//        model.append("hi")
+        model = [String]()
     }
     
     @IBAction func unwindToDoListTableViewController(segue: UIStoryboardSegue) {
-//        if let sourceVC = segue.sourceViewController as? ToDoListTableViewController {
-//            sourceVC.model.append(ToDoListItem.text)
-//        }
-        print ("bye")
-        print (model)
         self.tableView.reloadData()
     }
     
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        let sourceVC = segue.sourceViewController // this
-
-  
-        
+        if (segue.identifier == "toStats") {
+            let destVC = segue.destinationViewController as! DailyStatsViewViewController
+            destVC.numCompleted = completed.count
+            print ("prepare for segue")
+            return
+        } else {
+            return
+        }
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-
+    // this fill cells with data
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        // get some cell
         let cell = tableView.dequeueReusableCellWithIdentifier("ToDoCell", forIndexPath: indexPath) as! ToDoListTableViewCell
-        //  edit it
         cell.toDoItemTextLabel.text = model[indexPath.row]
-        // return it
+        cell.accessoryType = .Checkmark
+        print (cell.toDoItemTextLabel.text)
+        if completed.contains(cell.toDoItemTextLabel.text!) {
+            cell.accessoryType = .Checkmark
+        } else{
+            cell.accessoryType = .None
+        }
         return cell
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print (model.count)
         return model.count
     }
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if (editingStyle == UITableViewCellEditingStyle.Delete) {
             // handle delete (by removing the data from your array and updating the tableview)
+            model.removeAtIndex(indexPath.row)
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
             
         }
     }
     
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: false)
+        let tappedItem = model[indexPath.row]
+        print("tapped item: " + tappedItem)
+        if !(completed.contains(tappedItem)) {
+            completed.append(tappedItem)
+        } else {
+            completed = completed.filter() {$0 != tappedItem}
+        }
+        print ("completed")
+        print (completed)
+//        tappedItem.completed = !tappedItem.completed
+        tableView.reloadData()
+        
+    }
+    
+    func isWithin24Hours(date: NSDate) -> Bool {
+        let yesterday = NSDate(timeIntervalSinceNow: -3600*24)
+        return yesterday.earlierDate(date) == yesterday
+//        return false
+//        var anHourAgo = NSDate(timeIntervalSinceNow: -3600)
+    }
+
 
 }
 
