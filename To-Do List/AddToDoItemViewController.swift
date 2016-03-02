@@ -13,6 +13,7 @@ class AddToDoItemViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        ToDoListItem.layer.borderWidth = 1
     }
     
     override func didReceiveMemoryWarning() {
@@ -20,7 +21,7 @@ class AddToDoItemViewController: UIViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let destVC = segue.destinationViewController as! ToDoListTableViewController // contains textfield
+        let destVC = segue.destinationViewController as! ToDoListTableViewController
         if (ToDoListItem.text != "") {
             destVC.model.append(ToDoListItem.text!)
         }

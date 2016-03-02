@@ -6,7 +6,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--To Do List Table View Controller-->
+        <!--To-Do List-->
         <scene sceneID="gR0-F4-c7l">
             <objects>
                 <tableViewController id="cVz-IZ-6eL" customClass="ToDoListTableViewController" customModule="To_Do_List" customModuleProvider="target" sceneMemberID="viewController">
@@ -45,8 +45,8 @@
                             <outlet property="delegate" destination="cVz-IZ-6eL" id="E27-WH-8mb"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="SXE-Ch-iNb">
-                        <barButtonItem key="leftBarButtonItem" title="Daily Stats View" id="4SO-gN-REv">
+                    <navigationItem key="navigationItem" title="To-Do List" id="SXE-Ch-iNb">
+                        <barButtonItem key="leftBarButtonItem" title="Today's Stats" id="4SO-gN-REv">
                             <connections>
                                 <segue destination="bfY-zZ-cV4" kind="show" identifier="toStats" id="MWf-bo-Vg6"/>
                             </connections>

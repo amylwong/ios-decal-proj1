@@ -24,11 +24,4 @@ class DailyStatsViewViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         numberItemsCompletedLabel.text = String(numCompleted)
     }
-    
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        _ = segue.destinationViewController as! ToDoListTableViewController
-//
-//        numberItemsCompletedLabel.text = "hi"
-//        return
-//    }
 }
